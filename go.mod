@@ -1,4 +1,4 @@
-module github.com/meQlause/alias-root-sdk
+module github.com/HARA-DID/alias-root-sdk
 
 go 1.25.5
 

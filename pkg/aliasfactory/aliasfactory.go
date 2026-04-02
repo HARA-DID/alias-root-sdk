@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"math/big"
 
-	internal "github.com/meQlause/alias-root-sdk/utils"
+	internal "github.com/HARA-DID/alias-root-sdk/utils"
 	"github.com/meQlause/hara-core-blockchain-lib/pkg/blockchain"
 	"github.com/meQlause/hara-core-blockchain-lib/pkg/contract"
 	"github.com/meQlause/hara-core-blockchain-lib/pkg/wallet"
