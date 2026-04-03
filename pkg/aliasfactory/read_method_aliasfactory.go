@@ -7,8 +7,8 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/meQlause/hara-core-blockchain-lib/pkg/blockchain"
-	"github.com/meQlause/hara-core-blockchain-lib/utils"
+	"github.com/HARA-DID/hara-core-blockchain-lib/pkg/blockchain"
+	"github.com/HARA-DID/hara-core-blockchain-lib/utils"
 )
 
 func (af *AliasFactory) call(ctx context.Context, method string, args ...any) ([]byte, error) {

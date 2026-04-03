@@ -3,7 +3,7 @@ package aliasstorage
 import (
 	"math/big"
 
-	"github.com/meQlause/hara-core-blockchain-lib/utils"
+	"github.com/HARA-DID/hara-core-blockchain-lib/utils"
 )
 
 // SetFactoryContractParams for setFactoryContract function

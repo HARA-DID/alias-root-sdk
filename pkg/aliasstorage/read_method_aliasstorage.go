@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/meQlause/hara-core-blockchain-lib/pkg/blockchain"
-	"github.com/meQlause/hara-core-blockchain-lib/utils"
+	"github.com/HARA-DID/hara-core-blockchain-lib/pkg/blockchain"
+	"github.com/HARA-DID/hara-core-blockchain-lib/utils"
 )
 
 func (as *AliasStorage) GetNodeOwner(
