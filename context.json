@@ -8,7 +8,7 @@
         {
           "name": "AliasFactory",
           "purpose": "A wrapper around the Alias factory contract for building and sending transactions.",
-          "methods": [
+          "read_methods": [
             { "name": "GetRegistrationPeriod", "description": "Returns the duration of a registration period code.", "args": ["context.Context", "uint8"], "returns": ["*big.Int", "error"] },
             { "name": "Namehash", "description": "Computes the ENS-style namehash for a given domain name.", "args": ["context.Context", "string"], "returns": ["utils.Hash", "error"] },
             { "name": "Resolve", "description": "Resolves a node hash to its registered DID.", "args": ["context.Context", "utils.Hash"], "returns": ["utils.Hash", "error"] },
@@ -21,7 +21,9 @@
             { "name": "GetDIDFromString", "description": "Retrieves the DID for a domain name string.", "args": ["context.Context", "string"], "returns": ["utils.Hash", "error"] },
             { "name": "GetTLDOwner", "description": "Returns the owner of a Top-Level Domain.", "args": ["context.Context", "string"], "returns": ["string", "error"] },
             { "name": "GetAddress", "description": "Returns the contract address of the factory.", "args": [], "returns": ["utils.Address"] },
-            { "name": "GetBlockchain", "description": "Returns the associated blockchain instance.", "args": [], "returns": ["*blockchain.Blockchain"] },
+            { "name": "GetBlockchain", "description": "Returns the associated blockchain instance.", "args": [], "returns": ["*blockchain.Blockchain"] }
+          ],
+          "write_methods": [
             { "name": "SetDIDRootStorage", "description": "Updates the DID root storage contract address.", "args": ["context.Context", "*wallet.Wallet", "SetDIDRootStorageParams", "bool"], "returns": ["[]string", "error"] },
             { "name": "SetDIDOrgStorage", "description": "Updates the DID organization storage contract address.", "args": ["context.Context", "*wallet.Wallet", "SetDIDOrgStorageParams", "bool"], "returns": ["[]string", "error"] },
             { "name": "RegisterTLD", "description": "Registers a new Top-Level Domain.", "args": ["context.Context", "*wallet.Wallet", "RegisterTLDParams", "bool"], "returns": ["[]string", "error"] },
@@ -36,8 +38,8 @@
             { "name": "TransferTLD", "description": "Transfers ownership of a Top-Level Domain.", "args": ["context.Context", "*wallet.Wallet", "TransferTLDParams", "bool"], "returns": ["[]string", "error"] }
           ]
         },
-        { "name": "AliasStatus", "purpose": "Represents the current state of a domain alias.", "methods": [] },
-        { "name": "SetDIDRootStorageParams", "purpose": "Parameters for updating root storage.", "methods": [{ "name": "ToArgs", "description": "Packs parameters for contract call.", "args": [], "returns": ["[]any"] }] }
+        { "name": "AliasStatus", "purpose": "Represents the current state of a domain alias.", "read_methods": [], "write_methods": [] },
+        { "name": "SetDIDRootStorageParams", "purpose": "Parameters for updating root storage.", "read_methods": [{ "name": "ToArgs", "description": "Packs parameters for contract call.", "args": [], "returns": ["[]any"] }], "write_methods": [] }
       ],
       "utility_functions": [
         { "name": "NewAliasFactory", "description": "Instantiates AliasFactory with given contract details.", "args": ["utils.Address", "utils.ABI", "*blockchain.Blockchain", "*contract.Contract"], "returns": ["*AliasFactory"] },
@@ -55,7 +57,7 @@
         {
           "name": "AliasStorage",
           "purpose": "A wrapper around the Alias storage contract.",
-          "methods": [
+          "read_methods": [
             { "name": "GetNodeOwner", "description": "Returns the owner address for a given node.", "args": ["context.Context", "[32]byte"], "returns": ["utils.Address", "error"] },
             { "name": "GetTLDOwner", "description": "Returns the owner address for a TLD node.", "args": ["context.Context", "[32]byte"], "returns": ["utils.Address", "error"] },
             { "name": "GetNodeDID", "description": "Returns the DID associated with a specific node.", "args": ["context.Context", "[32]byte", "[32]byte"], "returns": ["[32]byte", "error"] },
@@ -64,12 +66,14 @@
             { "name": "GetDIDRootStorage", "description": "Returns the root storage contract address.", "args": ["context.Context"], "returns": ["utils.Address", "error"] },
             { "name": "GetDIDOrgStorage", "description": "Returns the organization storage contract address.", "args": ["context.Context"], "returns": ["utils.Address", "error"] },
             { "name": "GetAddress", "description": "Returns the contract address of the storage unit.", "args": [], "returns": ["utils.Address"] },
-            { "name": "GetBlockchain", "description": "Returns the associated blockchain instance.", "args": [], "returns": ["*blockchain.Blockchain"] },
+            { "name": "GetBlockchain", "description": "Returns the associated blockchain instance.", "args": [], "returns": ["*blockchain.Blockchain"] }
+          ],
+          "write_methods": [
             { "name": "SetFactoryContract", "description": "Updates the factory contract reference in storage.", "args": ["context.Context", "*wallet.Wallet", "SetFactoryContractParams", "bool"], "returns": ["[]string", "error"] }
           ]
         },
-        { "name": "AliasData", "purpose": "Data structure containing alias metadata.", "methods": [] },
-        { "name": "TxParams", "purpose": "Interface for packing transaction arguments.", "methods": [{ "name": "ToArgs", "description": "Packs parameters for contract call.", "args": [], "returns": ["[]any"] }] }
+        { "name": "AliasData", "purpose": "Data structure containing alias metadata.", "read_methods": [], "write_methods": [] },
+        { "name": "TxParams", "purpose": "Interface for packing transaction arguments.", "read_methods": [{ "name": "ToArgs", "description": "Packs parameters for contract call.", "args": [], "returns": ["[]any"] }], "write_methods": [] }
       ],
       "utility_functions": [
         { "name": "NewAliasStorage", "description": "Instantiates AliasStorage with given contract details.", "args": ["utils.Address", "utils.ABI", "*blockchain.Blockchain", "*contract.Contract"], "returns": ["*AliasStorage"] },
@@ -80,7 +84,7 @@
     "utils": {
       "purpose": "General purpose utilities and shared interfaces.",
       "exported_types": [
-        { "name": "TxParams", "purpose": "Common interface for transaction parameters across the SDK.", "methods": [{ "name": "ToArgs", "description": "Returns arguments for the transaction.", "args": [], "returns": ["[]any"] }] }
+        { "name": "TxParams", "purpose": "Common interface for transaction parameters across the SDK.", "read_methods": [{ "name": "ToArgs", "description": "Returns arguments for the transaction.", "args": [], "returns": ["[]any"] }], "write_methods": [] }
       ],
       "utility_functions": [],
       "exported_constants": []
